@@ -5,6 +5,8 @@
  */
 package cr.ac.una.prograIII.appMVC.Vista;
 
+import cr.ac.una.prograIII.appMVC.Domain.jBlocked;
+
 /**
  *
  * @author Gustavo
@@ -17,9 +19,13 @@ public class Pantallabloqueada extends javax.swing.JFrame {
     public Pantallabloqueada() {
         initComponents();
          this.setLocationRelativeTo(null);
-            this.setResizable(false);
-            this.setExtendedState(this.MAXIMIZED_BOTH);
-            this.setLocationRelativeTo(null);
+         this.setResizable(false);
+         this.setExtendedState(this.MAXIMIZED_BOTH);
+         this.setLocationRelativeTo(null);
+         this.setDefaultCloseOperation( DO_NOTHING_ON_CLOSE  );
+         this.setAlwaysOnTop(true);
+         this.setUndecorated(true);
+         new jBlocked( this ).block();
            
             
     }

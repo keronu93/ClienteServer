@@ -24,7 +24,7 @@ import javax.swing.event.DocumentListener;
 public class ClienteServerControlador implements ActionListener, DocumentListener {
     VistaClienteServer vistaCliente;
     Pantallabloqueada pantallabloqueadaView;
-    private String NombUsuario, Direccion = "192.168.0.100";
+    private String NombUsuario, Direccion = "localhost";
     private ArrayList<String> Usuarios = new ArrayList();
     private int puerto = 2222;
     private Boolean EnLinea = false;
