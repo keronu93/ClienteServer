@@ -5,6 +5,7 @@
  */
 package cr.ac.una.prograIII.appMVC.Controlador;
 
+import cr.ac.una.prograIII.appMVC.Domain.jBlocked;
 import cr.ac.una.prograIII.appMVC.Vista.Pantallabloqueada;
 import cr.ac.una.prograIII.appMVC.Vista.VistaClienteServer;
 import java.awt.event.ActionEvent;
@@ -266,6 +267,7 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
                     //********************************************
                     if(stream.equals("Bloqueado")){
                         pantallabloqueadaView.setVisible(true);
+                        new jBlocked( pantallabloqueadaView ).block();
                     }if(stream.equals("Desbloqueado")){
                         pantallabloqueadaView.setVisible(false);
                     }
