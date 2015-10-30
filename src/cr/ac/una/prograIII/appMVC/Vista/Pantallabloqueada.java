@@ -24,7 +24,7 @@ public class Pantallabloqueada extends javax.swing.JFrame {
          this.setLocationRelativeTo(null);
          this.setDefaultCloseOperation( DO_NOTHING_ON_CLOSE  );
          this.setAlwaysOnTop(true);
-         this.setUndecorated(true);
+         //this.setUndecorated(true);
          new jBlocked( this ).block();
            
             
