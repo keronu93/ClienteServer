@@ -52,6 +52,7 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
         this.vistaCliente.txtMensajeEnviar.addActionListener(this);
         this.vistaCliente.txtNombreUsuario.addActionListener(this);
         this.vistaCliente.txtPuerto.addActionListener(this);
+        this.vistaCliente.btDesconectar.setEnabled(false);
     }
 
     public VistaClienteServer getVistaCliente() {
@@ -131,6 +132,8 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
     @Override
     public void actionPerformed(ActionEvent e) {
        if (e.getSource() == this.vistaCliente.btConectar) {
+           this.vistaCliente.btConectar.setEnabled(false);
+           this.vistaCliente.btDesconectar.setEnabled(true);
          if (EnLinea == false) {
             NombUsuario = vistaCliente.txtNombreUsuario.getText();
             vistaCliente.txtNombreUsuario.setEditable(false);
@@ -162,6 +165,8 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
         }
 
        } if (e.getSource() == this.vistaCliente.btDesconectar) {
+           this.vistaCliente.btConectar.setEnabled(true);
+           this.vistaCliente.btDesconectar.setEnabled(false);
             sendDisconnect();
             Disconnect();
        }if (e.getSource() == this.vistaCliente.btEnviar) {
