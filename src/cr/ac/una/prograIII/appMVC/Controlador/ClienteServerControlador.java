@@ -54,6 +54,10 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
         this.vistaCliente.txtNombreUsuario.addActionListener(this);
         this.vistaCliente.txtPuerto.addActionListener(this);
         this.vistaCliente.btDesconectar.setEnabled(false);
+        this.vistaCliente.txtDireccionIP.setEnabled(false);
+        this.vistaCliente.txtPuerto.setEnabled(false);
+        this.vistaCliente.txtDireccionIP.setText("localhost");
+        this.vistaCliente.txtPuerto.setText("2222");
     }
 
     public VistaClienteServer getVistaCliente() {
