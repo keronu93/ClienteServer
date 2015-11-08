@@ -34,7 +34,6 @@ public class VistaClienteServer extends javax.swing.JFrame {
         lbNombreUsuario = new javax.swing.JLabel();
         txtNombreUsuario = new javax.swing.JTextField();
         btConectar = new javax.swing.JButton();
-        btDesconectar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         Chat_Cliente = new javax.swing.JTextArea();
         txtMensajeEnviar = new javax.swing.JTextField();
@@ -54,14 +53,6 @@ public class VistaClienteServer extends javax.swing.JFrame {
         btConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btConectarActionPerformed(evt);
-            }
-        });
-
-        btDesconectar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/prograIII/appMVC/Vista/images/disconect.png"))); // NOI18N
-        btDesconectar.setText("Desconectar");
-        btDesconectar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btDesconectarActionPerformed(evt);
             }
         });
 
@@ -99,13 +90,11 @@ public class VistaClienteServer extends javax.swing.JFrame {
                             .addComponent(lbPuerto))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPuerto, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                            .addComponent(txtPuerto)
                             .addComponent(txtDireccionIP)
                             .addComponent(txtNombreUsuario))
                         .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btDesconectar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btConectar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(btConectar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
@@ -120,15 +109,10 @@ public class VistaClienteServer extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPuerto)
                     .addComponent(txtPuerto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
-                        .addComponent(btDesconectar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbNombreUsuario)
-                            .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbNombreUsuario)
+                    .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -145,10 +129,6 @@ public class VistaClienteServer extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btConectarActionPerformed
 
-    private void btDesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesconectarActionPerformed
-       
-    }//GEN-LAST:event_btDesconectarActionPerformed
-
     private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
        
 
@@ -161,7 +141,6 @@ public class VistaClienteServer extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextArea Chat_Cliente;
     public javax.swing.JButton btConectar;
-    public javax.swing.JButton btDesconectar;
     public javax.swing.JButton btEnviar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbDireccionIP;

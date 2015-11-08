@@ -47,13 +47,13 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
         this.vistaCliente = vistaCliente;
         this.pantallabloqueadaView=pantallabloqueadaview;
         this.vistaCliente.btConectar.addActionListener(this);
-        this.vistaCliente.btDesconectar.addActionListener(this);
+        
         this.vistaCliente.btEnviar.addActionListener(this);
         this.vistaCliente.txtDireccionIP.addActionListener(this);
         this.vistaCliente.txtMensajeEnviar.addActionListener(this);
         this.vistaCliente.txtNombreUsuario.addActionListener(this);
         this.vistaCliente.txtPuerto.addActionListener(this);
-        this.vistaCliente.btDesconectar.setEnabled(false);
+        
         this.vistaCliente.txtDireccionIP.setEnabled(false);
         this.vistaCliente.txtPuerto.setEnabled(false);
         this.vistaCliente.txtDireccionIP.setText("localhost");
@@ -138,7 +138,7 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
     public void actionPerformed(ActionEvent e) {
        if (e.getSource() == this.vistaCliente.btConectar) {
            this.vistaCliente.btConectar.setEnabled(false);
-           this.vistaCliente.btDesconectar.setEnabled(true);
+           
          if (EnLinea == false) {
             NombUsuario = vistaCliente.txtNombreUsuario.getText();
             vistaCliente.txtNombreUsuario.setEditable(false);
@@ -169,12 +169,7 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
             vistaCliente.Chat_Cliente.append("Ya esta conectado. \n");
         }
 
-       } if (e.getSource() == this.vistaCliente.btDesconectar) {
-           this.vistaCliente.btConectar.setEnabled(true);
-           this.vistaCliente.btDesconectar.setEnabled(false);
-            sendDisconnect();
-            Disconnect();
-       }if (e.getSource() == this.vistaCliente.btEnviar) {
+       } if (e.getSource() == this.vistaCliente.btEnviar) {
            String nothing = "";
         if ((vistaCliente.txtMensajeEnviar.getText()).equals(nothing)) {
             vistaCliente.txtMensajeEnviar.setText("");
@@ -262,6 +257,7 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
         public void run() {
             String[] data;
             String stream, done = "Done", conectado = "Conectado", desconectado = "Desconectado", chat = "Chat";
+            
 
             try {
                 while ((stream = reader.readLine()) != null) {
@@ -277,9 +273,10 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
                     }if(stream.equals("Desconectado")){
                         sendDisconnect();
                         Disconnect();
+                        
                     }
                     vistaCliente.Chat_Cliente.append(stream);
-                    
+                    vistaCliente.btConectar.setEnabled(true);
                 }
             } catch (Exception ex) {
             }
