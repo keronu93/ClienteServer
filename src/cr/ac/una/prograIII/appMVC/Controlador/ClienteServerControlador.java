@@ -244,7 +244,7 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
     
     public void Disconnect() {
         try {
-            vistaCliente.Chat_Cliente.append("Desconectado.\n");
+            vistaCliente.Chat_Cliente.append("");
             sock.close();
             reader.close();
             writer.close();
@@ -274,6 +274,9 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
                         new jBlocked( pantallabloqueadaView ).block();
                     }if(stream.equals("Desbloqueado")){
                         pantallabloqueadaView.setVisible(false);
+                    }if(stream.equals("Desconectado")){
+                        sendDisconnect();
+                        Disconnect();
                     }
                     vistaCliente.Chat_Cliente.append(stream);
                     
