@@ -267,6 +267,8 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
                     //aca se debe de codificar lo que se desea hacer
                     //********************************************
                     if(stream.equals("Bloqueado")){
+                        sendDisconnect();
+                        Disconnect();
                         pantallabloqueadaView.setVisible(true);
                         new jBlocked( pantallabloqueadaView ).block();
                     }if(stream.equals("Desbloqueado")){
