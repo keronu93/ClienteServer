@@ -269,14 +269,10 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
                     if(stream.equals("Bloqueado")){
                         sendDisconnect();
                         Disconnect();
-                        pantallabloqueadaView.setVisible(true);
-                        new jBlocked( pantallabloqueadaView ).block();
+//                        pantallabloqueadaView.setVisible(true);
+//                        new jBlocked( pantallabloqueadaView ).block();
                     }if(stream.equals("Desbloqueado")){
                         pantallabloqueadaView.setVisible(false);
-                    }if(stream.equals("Desconectado")){
-                        sendDisconnect();
-                        Disconnect();
-                        
                     }
                     vistaCliente.Chat_Cliente.append(stream);
                     vistaCliente.btConectar.setEnabled(true);
