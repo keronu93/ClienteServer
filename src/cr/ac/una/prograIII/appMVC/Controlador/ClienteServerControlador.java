@@ -5,6 +5,7 @@
  */
 package cr.ac.una.prograIII.appMVC.Controlador;
 
+import com.sun.corba.se.spi.activation.Server;
 import cr.ac.una.prograIII.appMVC.Domain.jBlocked;
 import cr.ac.una.prograIII.appMVC.Vista.Pantallabloqueada;
 import cr.ac.una.prograIII.appMVC.Vista.VistaClienteServer;
@@ -26,6 +27,7 @@ import javax.swing.event.DocumentListener;
 public class ClienteServerControlador implements ActionListener, DocumentListener {
     VistaClienteServer vistaCliente;
     Pantallabloqueada pantallabloqueadaView;
+    
     private String NombUsuario, Direccion = "localhost";
     private ArrayList<String> Usuarios = new ArrayList();
     private int puerto = 2222;
@@ -42,6 +44,7 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
     public void setPantallabloqueadaView(Pantallabloqueada pantallabloqueadaView) {
         this.pantallabloqueadaView = pantallabloqueadaView;
     }
+
     
 
     public ClienteServerControlador(VistaClienteServer vistaCliente, Pantallabloqueada pantallabloqueadaview) {
@@ -266,18 +269,52 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
                     //Aqui se reciben los mensajes del servidor
                     //aca se debe de codificar lo que se desea hacer
                     //********************************************
-                    if(stream.equals("Bloqueado")){
+                    if (stream.equals("Bloqueado")) {
+                        vistaCliente.btConectar.setEnabled(false);
                         sendDisconnect();
                         Disconnect();
 //                        pantallabloqueadaView.setVisible(true);
 //                        new jBlocked( pantallabloqueadaView ).block();
-                    }if(stream.equals("Desbloqueado")){
-                        pantallabloqueadaView.setVisible(false);
                     }
-                    vistaCliente.Chat_Cliente.append(stream);
-                    vistaCliente.btConectar.setEnabled(true);
-                }
-            } catch (Exception ex) {
+                    if (stream.equals("Desbloqueado")) {
+                        pantallabloqueadaView.setVisible(false);
+                        //vistaCliente.btConectar.setEnabled(false);
+                        if (EnLinea == false) {
+                            NombUsuario = vistaCliente.txtNombreUsuario.getText();
+                            vistaCliente.txtNombreUsuario.setEditable(false);
+
+                            try {
+                                //Se crea el sokect
+                                sock = new Socket(Direccion, puerto);
+                                InputStreamReader streamreader = new InputStreamReader(sock.getInputStream());
+                                reader = new BufferedReader(streamreader);
+
+                                //se envia un mensaje al servidor codificando que se 
+                                //conecto un nuevo cliente indicando al inicio del mensaje
+                                //"N:" lo que indica Nuevo usuario, despues va el nombre del usuario
+                                writer = new PrintWriter(sock.getOutputStream());
+                                writer.println("N:" + NombUsuario + ":te has conectado.:Conectado");
+                                writer.flush();
+
+                                EnLinea = true;
+                            } catch (Exception ex) {
+                                vistaCliente.Chat_Cliente.append("no se a podido conectar pruebe nuevamente \n");
+                                vistaCliente.txtNombreUsuario.setEditable(true);
+                            }
+
+                            ListenThread();
+
+                        } else if (EnLinea == true) {
+                            vistaCliente.Chat_Cliente.append("Ya esta conectado. \n");
+                        }
+
+                    }
+                    
+                
+                vistaCliente.Chat_Cliente.append(stream);
+                vistaCliente.btConectar.setEnabled(true);
+            }
+        } catch (Exception ex) {
             }
         }
     }
