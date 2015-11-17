@@ -269,10 +269,15 @@ public class ClienteServerControlador implements ActionListener, DocumentListene
                     //Aqui se reciben los mensajes del servidor
                     //aca se debe de codificar lo que se desea hacer
                     //********************************************
-                    if (stream.equals("Bloqueado")) {
+                    if (stream.equals("Desconectado")) {
                         sendDisconnect();
                         Disconnect();
+                      
+                    }
+                    if (stream.equals("Bloqueado")) {
                         vistaCliente.btConectar.setEnabled(false);
+                        vistaCliente.btEnviar.setEnabled(false);
+                        vistaCliente.txtMensajeEnviar.setEnabled(false);
 //                        pantallabloqueadaView.setVisible(true);
 //                        new jBlocked( pantallabloqueadaView ).block();
                     }
